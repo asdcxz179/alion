@@ -3,8 +3,8 @@
 
     const props = defineProps({
         code: { type: String, required: true },
-        height: {type: Number, default: 500},
-        width: {type: Number, default: 360},
+        height: {type: String, default: "100%"},
+        width: {type: Number, default: 315},
         play: {type: Boolean, default: false}
     });
     
