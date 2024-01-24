@@ -18,6 +18,7 @@
         controls:0,
         loop:1,
         playlist:props.code,
+        cookie: false,
     }
     var video = ref(null);
     var play = ref(((props.index == 0) ? true: false));

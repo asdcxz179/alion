@@ -6,7 +6,28 @@
   import axios from 'axios'
   import { onBeforeMount, ref, reactive, onMounted, watch  } from 'vue'
   
-  var videos:any = reactive([]);
+  var videos:any = reactive([
+    {
+      code: "UVQefAy6u_0",
+      show: false,
+    },
+    {
+      code: "tL3XXHXnn20",
+      show: false,
+    },
+    {
+      code: "ttMrQkBa38E",
+      show: false,
+    },
+    {
+      code: "N9fKBve_qpQ",
+      show: false,
+    },
+    {
+      code: "_XoCezcrKgU",
+      show: false,
+    },
+  ]);
 
   const default_show = ref(3);
   var show_index = ref(0);
@@ -32,14 +53,17 @@
   }
 
   const getList = async function() {
-    await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${import.meta.env.VITE_YOUTUBE_CHANNEL_ID}&order=date&type=video&videoDuration=short&key=${import.meta.env.VITE_GOOGLE_API_KEY}`)
+    await axios.get(`https://youtube.googleapis.com/youtube/v3/search?channelId=${import.meta.env.VITE_YOUTUBE_CHANNEL_ID}&order=date&type=video&videoDuration=short&key=${import.meta.env.VITE_GOOGLE_API_KEY}`)
     .then((res) => {
+      videos = reactive([]);
       res.data.items.map((item:any)=>{
         videos.push({
           code: item.id.videoId,
           show:false,
         })
       })
+    }).catch(() => {
+      makeVideos()
     })
   }
 

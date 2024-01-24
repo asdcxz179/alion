@@ -1,5 +1,6 @@
   .swiper {
     height: 100vh;
+    height: 100dvh;
   }
   .swiper-slide {
     /* background-color: aliceblue; */
