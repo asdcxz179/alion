@@ -3,30 +3,10 @@
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import 'swiper/css';
   import YouTube from '../components/YouTube.vue';
-  import { onBeforeMount, ref  } from 'vue'
+  import axios from 'axios'
+  import { onBeforeMount, ref, reactive, onMounted, watch  } from 'vue'
   
-  var videos = [
-    {
-      code: "UVQefAy6u_0",
-      show: false,
-    },
-    {
-      code: "tL3XXHXnn20",
-      show: false,
-    },
-    {
-      code: "ttMrQkBa38E",
-      show: false,
-    },
-    {
-      code: "N9fKBve_qpQ",
-      show: false,
-    },
-    {
-      code: "_XoCezcrKgU",
-      show: false,
-    },
-  ];
+  var videos:any = reactive([]);
 
   const default_show = ref(3);
   var show_index = ref(0);
@@ -43,7 +23,7 @@
     makeVideos()
   };
 
-  const makeVideos = function(){
+  const makeVideos = async function(){
     for(let i= show_index.value; i < (show_index.value + default_show.value); i++) {
       if(typeof(videos[i]) != 'undefined' && !videos[i].show) {
         videos[i].show = true;
@@ -51,9 +31,26 @@
     }
   }
 
-  onBeforeMount(() => {
+  const getList = async function() {
+    await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${import.meta.env.VITE_YOUTUBE_CHANNEL_ID}&order=date&type=video&videoDuration=short&key=${import.meta.env.VITE_GOOGLE_API_KEY}`)
+    .then((res) => {
+      res.data.items.map((item:any)=>{
+        videos.push({
+          code: item.id.videoId,
+          show:false,
+        })
+      })
+    })
+  }
+
+  watch(videos, () => {
     makeVideos()
   })
+
+  onBeforeMount(async () => {
+    await getList();
+  })
+
 </script>
 
 <template>

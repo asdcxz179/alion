@@ -12,6 +12,7 @@
 
     const youtube_params:Object = {
         autoplay: ((props.index == 0) ? true: false),
+        mute: ((props.index == 0) ? true: false),
         listType: 'user_uploads',
         height: 500,
         controls:0,
@@ -20,7 +21,7 @@
     }
     var video = ref(null);
     var play = ref(((props.index == 0) ? true: false));
-    var mute = ref(false);
+    var mute = ref(((props.index == 0) ? true: false));
     var item_show = ref(false);
 
     watch(() => props.activeIndex, (selection) => {
@@ -84,10 +85,6 @@
         }, 1000);
     };
 
-    onMounted(() => {
-        // console.log(props.play);
-    })
-    
 </script>
 <template>
     <div class="youtube-short">

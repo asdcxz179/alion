@@ -17,7 +17,6 @@ import { faUserSecret, faThumbsUp, faThumbsDown, faMessage, faShare, faEllipsisV
 library.add(faUserSecret, faThumbsUp, faThumbsDown, faMessage, faShare, faEllipsisVertical, faWifi, faPlay, faPause, faVolumeUp, faVolumeMute)
 
 
-
 const app = createApp(App)
 
 app.use(router)
