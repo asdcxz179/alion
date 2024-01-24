@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { onMounted, watch, ref, reactive } from 'vue'
+    import { watch, ref } from 'vue'
 
     const props = defineProps({
         index: { type: Number, required: true },
