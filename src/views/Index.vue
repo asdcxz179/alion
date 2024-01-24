@@ -75,8 +75,5 @@
         <YouTube :code="video.code" :show="video.show" :index="key" :activeIndex="show_index"></YouTube>
       </swiper-slide>
     </swiper>
-    <div  class="mb-10">
-      
-    </div>
   </div>
 </template>

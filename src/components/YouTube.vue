@@ -18,25 +18,13 @@
         loop:1,
         playlist:props.code,
     }
-    interface Video  {
-        playVideo:any,
-        pauseVideo:any,
-        mute: any,
-        unMute: any,
-    }
-
-    var video:Video = reactive({
-        playVideo: null,
-        pauseVideo:null,
-        mute: null,
-        unMute: null,
-    });
+    var video = ref(null);
     var play = ref(((props.index == 0) ? true: false));
     var mute = ref(false);
     var item_show = ref(false);
 
     watch(() => props.activeIndex, (selection) => {
-        if(video) {
+        if(video.value) {
             if(selection == props.index) {
                 play.value = true;
             }else{
@@ -45,21 +33,25 @@
         }
     })
     watch(play, (selection) => {
-        if(video) {
+        if(video.value) {
             if(selection) {
-                video.playVideo();
+                // @ts-ignore
+                video.value.playVideo();
             }else{
-                video.pauseVideo();
+                // @ts-ignore
+                video.value.pauseVideo();
             }
         }
     })
 
     watch(mute, (selection) => {
-        if(video) {
+        if(video.value) {
             if(selection) {
-                video.mute();
+                // @ts-ignore
+                video.value.mute();
             }else{
-                video.unMute();
+                // @ts-ignore
+                video.value.unMute();
             }
         }
     })
@@ -95,6 +87,7 @@
     onMounted(() => {
         // console.log(props.play);
     })
+    
 </script>
 <template>
     <div class="youtube-short">
