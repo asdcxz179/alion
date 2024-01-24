@@ -26,7 +26,7 @@
 5. 前往 [Youtube Data API](https://developers.google.com/youtube/v3?hl=zh-tw) 申請API金鑰
 6. 前往頻道ID查詢網站 https://ytubetool.com/zh-hant/tools/youtube-channel-id 將想抓取short的Youtube網址貼入查詢
 7. `vi .env`，設定 `VITE_GOOGLE_API_KEY` 、`VITE_YOUTUBE_CHANNEL_ID`，
-8. `node youtube.js`，更影片列表JSONN
+8. `node youtube.js`，更影片列表JSON
 9. `npm run dev`
 
 ## 打包指令
