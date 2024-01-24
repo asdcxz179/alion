@@ -19,9 +19,7 @@
     top:0;
     width:100%;
   }
-  .video-control:hover .video-status,  .video-control:hover .video-mute {
-    display: flex;
-  }
+  
   .control {
     position: absolute;
     right: 0;
@@ -182,5 +180,8 @@
 
       .circle {
         color: #0f0f0f;
+      }
+      .video-control:hover .video-status,  .video-control:hover .video-mute {
+        display: flex;
       }
   }
